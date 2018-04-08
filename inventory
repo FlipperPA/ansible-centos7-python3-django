@@ -1,0 +1,10 @@
+[web-py]
+py.digitalocean.com
+
+[web-php]
+php1.digitalocean.com
+php2.digitalocean.com
+
+[centos-7:children]
+web-py
+web-php
