@@ -1,0 +1,4 @@
+---
+# role dependencies for httpd_mod_wsgi
+dependencies:
+  - ../../roles/repository_ius

@@ -1,0 +1,8 @@
+---
+- name: Set git tab completion in global bashrc
+  lineinfile:
+    dest: /etc/bashrc
+    line: "{{ item }}"
+  with_items:
+    - "# git tab completion"
+    - "source /etc/bash_completion.d/git"

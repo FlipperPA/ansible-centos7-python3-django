@@ -1,0 +1,7 @@
+---
+- name: Run yum update
+  yum:
+    name: '*'
+    state: latest
+  environment:
+    ACCEPT_EULA: "Y"

@@ -1,0 +1,37 @@
+---
+- name: Create django directories
+  file:
+    name: "/var/django/{{ item }}"
+    state: directory
+    owner: apache
+    group: apache
+  with_items:
+    - virtualenvs
+    - sites 
+
+- name:  Create django WRDS API dirs
+  file:
+    name: "/var/django/{{ item }}"
+    state: directory
+    owner: wrdsapi
+    group: wharton 
+  with_items:
+    - wrdsapi
+    - wrdsapi/sites 
+    - wrdsapi/virtualenvs
+
+- name: Set perms on django dirs
+  file:
+    name: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - /var/django
+    - /var/django/wrdsapi
+
+- name: Set ownership on /var/media/
+  file:
+    name: /var/media
+    state: directory
+    owner: apache
+    group: apache

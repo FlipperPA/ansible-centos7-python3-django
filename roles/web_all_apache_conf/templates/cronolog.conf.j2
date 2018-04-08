@@ -1,0 +1,2 @@
+ErrorLog "|/usr/sbin/cronolog /var/log/httpd/errorlog/%Y/%Y-%m-{{ inventory_hostname_short }}-error.log"
+CustomLog "|/usr/sbin/cronolog /var/log/httpd/accesslog/%Y/%Y-%m-{{ inventory_hostname_short }}-access.log" combined

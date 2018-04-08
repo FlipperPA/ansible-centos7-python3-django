@@ -1,0 +1,11 @@
+---
+- set_fact:
+    ius_distribution_abbrev: "{{ (ansible_distribution == 'CentOS') | ternary('centos', 'rhel') }}"
+
+# Must be state: present due to deficiency in ansible. See:
+# https://github.com/ansible/ansible-modules-core/issues/948 
+- name: install IUS release package
+  yum:
+    name: "https://{{ ius_distribution_abbrev }}{{ ansible_distribution_major_version }}.iuscommunity.org/ius-release.rpm"
+    state: present
+  when: ansible_os_family == 'RedHat'

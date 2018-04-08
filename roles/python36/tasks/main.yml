@@ -1,0 +1,29 @@
+---
+- name: Install Python from IUS
+  yum:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - python36u
+    - python36u-pip
+    - python36u-devel
+
+- name: Create symlink for Python 3.
+  become: yes
+  file:
+    src: '/usr/bin/python3.6'
+    dest: '/usr/bin/python3'
+    state: link
+
+- name: Create symlink for pip 3.
+  become: yes
+  file:
+    src: '/usr/bin/pip3.6'
+    dest: '/usr/bin/pip3'
+    state: link
+
+- name: Install virtualenvwrapper for Python 3.6
+  become: yes
+  pip:
+    name: virtualenvwrapper
+    executable: pip3
