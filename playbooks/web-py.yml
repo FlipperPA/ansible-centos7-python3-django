@@ -11,55 +11,20 @@
     "USER": "apache"
     "GROUP": "apache"
     "DJANGO_ROOT": "/var/django/sites"
-    "VIRTUALENV_ROOT": "/var/django/virtualenvs"
     "STATIC": true
 
     # Websites / domains for these servers to host
     "websites": [
         {
-            "name": "wrds-api-prod",
-            "server_name": "wrds-api.wharton.upenn.edu",
+            "name": "aasepia",
+            "server_name": "aasepia.org",
             "sites": [
                 {
                     "path": "/",
-                    "django_root": "/var/django/wrdsapi/sites",
-                    "virtualenv_root": "/var/django/wrdsapi/virtalenvs",
-                    "project": "wrds-api-prod",
-                    "user": "wrdsapi",
-                    "group": "wharton"
+                    "project": "aasepia",
                 }
             ]
         },
-        {
-            "name": "wrds-classroom-prod",
-            "server_name": "wrds-classroom.wharton.upenn.edu",
-            "sites": [
-                {
-                    "path": "/llbacktester",
-                    "project": "ll-backtester-project-prod"
-                },
-                {
-                    "path": "/otis",
-                    "project": "otis-prod"
-                },
-                {
-                    "path": "/",
-                    "project": "classroom-prod",
-                    "static": false
-                }
-            ]
-        },
-        {
-            "name": "wrds-www-prod",
-            "server_name": "wrds-www.wharton.upenn.edu",
-            "sites": [
-                {
-                    "path": "/",
-                    "project": "django-wrds-prod",
-                    "media_path": "/var/media/wrds-www"
-                }
-            ]
-        }
     ]
   roles:
     - { role: "web_all_apache_conf", tags: ['web'] }
