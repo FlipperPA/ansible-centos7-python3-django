@@ -1,6 +1,6 @@
 ---
 - name: Configuring SEPIA Python Web Host
-  hosts: "{{ sepia_host | default('web-py') }}"
+  hosts: "{{ host_group | default('web-py') }}"
   become: yes
   roles:
     - { role: "repository_epel", tags: ['yum'] }

@@ -1,5 +1,5 @@
 ---
-- import_playbook: web-common.yml wrds_host=web-py WEB_ENVIRONMENT="prod"
+- import_playbook: web-common.yml host_group=web-py WEB_ENVIRONMENT="prod"
 - name: Additional tasks to be performed on the prod servers
   hosts: py-web-prod
   become: yes
