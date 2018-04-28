@@ -2,6 +2,25 @@
 
 This repository holds Ansible playbooks and roles for configuring SEPIA servers.
 
+## Preparing a Destination Server
+
+The destination server will need to be kickstarted with CentOS 7. Create a user called `sepia_ansible` on the destination server:
+
+```bash
+adduser sepia_ansible
+passwd sepia_ansible
+usermod -aG wheel sepia_ansible
+```
+
+Then edit `/etc/sudoers` and add these lines:
+
+```
+User_Alias        NO_SUDO_PASSWORD = sepia_ansible
+NO_SUDO_PASSWORD  ALL = (ALL) NOPASSWD: ALL
+```
+
+You will then need to add your public key from your host control machine to `sepia_ansible`'s authorized keys.
+
 ## Getting started
 
 Clone this repository.
@@ -28,7 +47,3 @@ Documentation: list help section, show documentation for specific command (with 
 
     ansible-doc -l
     ansible-doc yum
-
-## Web Development
-
-Users who wish to do on-server development must be added to the Ansible role in `roles/web_dev_tools/vars/main.yml`. This will create them a development directory on the SEPIA development servers and a `projects` symlink in their home directory to it.
