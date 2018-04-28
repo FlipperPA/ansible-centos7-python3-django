@@ -4,22 +4,28 @@ This repository holds Ansible playbooks and roles for configuring SEPIA servers.
 
 ## Preparing a Destination Server
 
-The destination server will need to be kickstarted with CentOS 7. Create a user called `sepia_ansible` on the destination server:
+The destination server will need to be kickstarted with CentOS 7. Log in as root to your freshly created Digital Ocean droplet (you used SSH keys, right?), and create a user called `sepia_ansible` on the destination server:
 
 ```bash
 adduser sepia_ansible
 passwd sepia_ansible
 usermod -aG wheel sepia_ansible
+chmod 640 /etc/sudoers
 ```
 
-Then edit `/etc/sudoers` and add these lines:
+Then edit `/etc/sudoers`. Comment out the line that says `# %wheel        ALL=(ALL)       ALL` and uncomment the line that says `%wheel  ALL=(ALL)       NOPASSWD: ALL`. Then let's become the `sepia_ansible` user, and generate keys:
 
-```
-User_Alias        NO_SUDO_PASSWORD = sepia_ansible
-NO_SUDO_PASSWORD  ALL = (ALL) NOPASSWD: ALL
+```bash
+su - sepia_ansible
+ssh-keygen
 ```
 
-You will then need to add your public key from your host control machine to `sepia_ansible`'s authorized keys.
+You will then need to add your public key from your host control machine to `sepia_ansible`'s authorized keys in `~/.ssh/authorized_keys`:
+
+```bash
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv+IdIP7geRsOXUz7scIKTwkfxJ3J7UelRObTifdnmCHR6s53+irm9uVBP8se2IH1Vw4ETfjtdzI4vHce1lYwFVQx9V9cmKFyxCnroV7bTx6EPQ2WqkpAOfM5IGG7vGnrX3M0MPLrA0T8XrhPpCzM2GfNR8fqOQiPROP5blahblahblahblahblah5TQknqu7/twBtXuMpKakR4Vo08cq1MBJI8akEG/tzppoeYuRY8BzKqJVD+2Gp1RgBVsXLxX2W9ng6cFAHTRxs65koTWyVLCCCXsP54X4UqJRy1x5/PumL1VJn8LvXTGcOyfyFSBLClQ== you@yourdomain.com" > .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+```
 
 ## Getting started
 
