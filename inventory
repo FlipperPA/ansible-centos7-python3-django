@@ -1,9 +1,5 @@
 [web-py]
-104.131.59.28
-
-[web-php]
-php1.digitalocean.com
-php2.digitalocean.com
+py1.digitalocean.com
 
 [centos-7:children]
 web-py
