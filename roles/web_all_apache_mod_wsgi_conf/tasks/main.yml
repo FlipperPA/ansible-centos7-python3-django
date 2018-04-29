@@ -15,14 +15,6 @@
     group: root
     mode: 0600
 
-- name: place cronolog.conf file
-  template:
-    src: "cronolog.conf.j2"
-    dest: "{{ httpd_ext_dir }}/cronolog.conf"
-    owner: root
-    group: root
-    mode: 0644
-
 - name: place mod_wsgi config
   copy:
     src: "mod_wsgi-python3.6.conf"
@@ -31,17 +23,17 @@
     group: root
     mode: 0644
 
-- name: place certs
-  copy:
-    src: "/etc/ansible/assets/{{ item }}"
-    dest: "/etc/pki/tls/{{ item }}"
-    owner: root
-    group: root
-    mode: 0600
-  with_items:
-    - "private/wrds-{{ WEB_ENVIRONMENT }}_cert.key"
-    - certs/InCommonRSAServerCA_2.pem
-    - certs/wrds-{{ WEB_ENVIRONMENT }}_cert.crt-endpoint
+# - name: place certs
+#   copy:
+#     src: "/etc/ansible/assets/{{ item }}"
+#     dest: "/etc/pki/tls/{{ item }}"
+#     owner: root
+#     group: root
+#     mode: 0600
+#   with_items:
+#     - "private/wrds-{{ WEB_ENVIRONMENT }}_cert.key"
+#     - certs/InCommonRSAServerCA_2.pem
+#     - certs/wrds-{{ WEB_ENVIRONMENT }}_cert.crt-endpoint
 
 - name: Create Apache website conf files.
   template:
@@ -53,50 +45,3 @@
   service:
     name: httpd
     state: restarted
-
-# Move stuff below here elsewhere, but where?
-- name: copy hostfile
-  copy:
-    src: ../assets/web/hosts
-    dest: /etc/hosts
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
-
-- name: copy iptables
-  copy:
-    src: ../assets/web/stage/iptables
-    dest: /etc/sysconfig/iptables
-    owner: root
-    group: root
-    mode: 0600
-    backup: yes
-  notify:
-    - bounce_fw
-
-- name: create httpd service override directory
-  file:
-    path: /etc/systemd/system/httpd.service.d
-    owner: root
-    group: root
-    mode: 0755
-    state: directory
-  tags:
-    - fix_httpd_svc 
-
-- name: put in service override for httpd
-  copy:
-    src: ../assets/web/systemd/system/httpd.service.d/override.conf
-    dest: /etc/systemd/system/httpd.service.d/override.conf
-    owner: root
-    group: root
-    mode: 0644
-  tags:
-    - fix_httpd_svc 
-
-- name: daemon-reload systemd     # would love this as a handler, not sure if possible at this time
-  systemd:
-    daemon-reload: yes
-  tags:
-    - fix_httpd_svc 
