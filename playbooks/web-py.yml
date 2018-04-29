@@ -1,7 +1,7 @@
 ---
 - import_playbook: web-common.yml host_group=web-py WEB_ENVIRONMENT="prod"
 - name: Additional tasks to be performed on the prod servers
-  hosts: py-web-prod
+  hosts: web-py
   become: yes
   vars:
     # WEB_ENVIRONMENT: either `prod` or `nonprod` for cert naming convention
@@ -27,4 +27,4 @@
         },
     ]
   roles:
-    - { role: "web_all_apache_conf", tags: ['web'] }
+    - { role: "web_all_apache_mod_wsgi_conf", tags: ['web'] }
