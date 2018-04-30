@@ -1,11 +1,11 @@
 ---
-- name: place httpd.conf file
-  copy:
-    src: httpd.conf
-    dest: /etc/httpd/conf/httpd.conf
-    owner: root
-    group: root
-    mode: 0600
+# - name: place httpd.conf file
+#   copy:
+#     src: httpd.conf
+#     dest: /etc/httpd/conf/httpd.conf
+#     owner: root
+#     group: root
+#     mode: 0600
 
 # - name: place ssl.conf file
 #   template:
