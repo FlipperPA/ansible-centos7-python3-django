@@ -1,6 +1,6 @@
 ---
 - import_playbook: web-common.yml host_group=web-py WEB_ENVIRONMENT="prod"
-- name: Additional tasks to be performed on the prod servers
+- name: Additional tasks to be performed on Python / Django servers
   hosts: web-py
   become: yes
   vars:

@@ -1,16 +1,11 @@
 ---
-- name: Configuring SEPIA Python Web Host
+- name: Configuring Generic Web Host
   hosts: "{{ host_group | default('web-py') }}"
   become: yes
   roles:
     - { role: "repository_epel", tags: ['yum'] }
     - { role: "repository_ius", tags: ['yum'] }
     - { role: "web_all_yum_packages", tags: ['yum'] }
-    - { role: "python27", tags: ['python'] }
-    - { role: "python36", tags: ['python'] }
-    - { role: "postgresql-10-server", tags: ['postgresql']}
     - { role: "mssql", tags: ['sql', 'sql server', 'msodbc'] }
     - { role: "web_all_httpd", tags: ['httpd'] }
-    - { role: "web_all_httpd_mod_wsgi", tags: ['python', 'httpd'] }
-    - { role: "web_all_directories", tags: ['web'] }
     - { role: "redis", tags: ['cache', 'redis'] }
