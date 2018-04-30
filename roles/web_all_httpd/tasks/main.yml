@@ -13,19 +13,8 @@
     enabled: true
     state: started
 
-- name: Create apache user home directory
-  file:
-    name: "/home/apache/.ssh"
-    state: directory
-    owner: apache
-    group: apache
-    mode: 0755
-
-- name: Create apache user authorized_keys
-  copy:
-    dest: "/home/apache/.ssh/authorized_keys"
-    content: ""
-    force: no
-    owner: apache
-    group: apache
-    mode: 0600
+- name: Set authorized key from user's local public key file
+  authorized_key:
+    user: apache
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
