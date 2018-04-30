@@ -3,9 +3,9 @@
   file:
     name: "/var/django/{{ item }}"
     state: directory
-    owner: apache
+    owner: django_deploy
     group: apache
-    mode: 0755
+    mode: 0775
   with_items:
     - sites
     - media
