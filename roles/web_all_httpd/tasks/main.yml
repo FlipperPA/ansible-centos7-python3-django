@@ -13,7 +13,7 @@
     enabled: true
     state: started
 
-- name: Create django directories
+- name: Create apache user home directory
   file:
     name: "/home/apache/.ssh"
     state: directory
@@ -21,10 +21,11 @@
     group: apache
     mode: 0755
 
-- name: Create django directories
-  file:
-    name: "/home/apache/.ssh/authorized_keys"
-    state: file
+- name: Create apache user authorized_keys
+  copy:
+    dest: "/home/apache/.ssh/authorized_keys"
+    content: "",
+    force: no
     owner: apache
     group: apache
     mode: 0600
