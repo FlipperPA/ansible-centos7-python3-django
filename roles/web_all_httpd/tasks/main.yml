@@ -12,3 +12,19 @@
     name: httpd
     enabled: true
     state: started
+
+- name: Create django directories
+  file:
+    name: "/home/apache/.ssh"
+    state: directory
+    owner: apache
+    group: apache
+    mode: 0755
+
+- name: Create django directories
+  file:
+    name: "/home/apache/.ssh/authorized_keys"
+    state: file
+    owner: apache
+    group: apache
+    mode: 0600
