@@ -21,9 +21,3 @@
     src: '/usr/bin/pip3.6'
     dest: '/usr/bin/pip3'
     state: link
-
-- name: Install virtualenvwrapper for Python 3.6
-  become: yes
-  pip:
-    name: virtualenvwrapper
-    executable: pip3
