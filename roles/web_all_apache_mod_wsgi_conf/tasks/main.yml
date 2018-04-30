@@ -7,13 +7,13 @@
     group: root
     mode: 0600
 
-- name: place ssl.conf file
-  template:
-    src: "ssl.conf.j2"
-    dest: "{{ httpd_ext_dir }}/ssl.conf"
-    owner: root
-    group: root
-    mode: 0600
+# - name: place ssl.conf file
+#   template:
+#     src: "ssl.conf.j2"
+#     dest: "{{ httpd_ext_dir }}/ssl.conf"
+#     owner: root
+#     group: root
+#     mode: 0600
 
 - name: place mod_wsgi config
   copy:
