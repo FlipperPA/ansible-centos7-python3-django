@@ -16,12 +16,15 @@
     # Websites / domains for these servers to host
     "websites": [
         {
-            "name": "aasepia",
-            "server_name": "aasepia.org",
+            "name": "yourserver",
+            "server_name": "yourserver.org",
+            "server_aliases": [
+                "www.yourserver.org"
+            ],
             "sites": [
                 {
                     "path": "/",
-                    "project": "aasepia",
+                    "project": "yourserver",
                 }
             ]
         },
