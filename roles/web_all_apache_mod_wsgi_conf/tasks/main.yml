@@ -1,43 +1,7 @@
 ---
-# - name: place httpd.conf file
-#   copy:
-#     src: httpd.conf
-#     dest: /etc/httpd/conf/httpd.conf
-#     owner: root
-#     group: root
-#     mode: 0600
-
-# - name: place ssl.conf file
-#   template:
-#     src: "ssl.conf.j2"
-#     dest: "{{ httpd_ext_dir }}/ssl.conf"
-#     owner: root
-#     group: root
-#     mode: 0600
-
-- name: place mod_wsgi config
-  copy:
-    src: "mod_wsgi-python3.6.conf"
-    dest: "{{ httpd_ext_dir }}/10-wsgi-python3.6.conf"
-    owner: root
-    group: root
-    mode: 0644
-
-# - name: place certs
-#   copy:
-#     src: "/etc/ansible/assets/{{ item }}"
-#     dest: "/etc/pki/tls/{{ item }}"
-#     owner: root
-#     group: root
-#     mode: 0600
-#   with_items:
-#     - "private/wrds-{{ WEB_ENVIRONMENT }}_cert.key"
-#     - certs/InCommonRSAServerCA_2.pem
-#     - certs/wrds-{{ WEB_ENVIRONMENT }}_cert.crt-endpoint
-
-- name: Create Apache website conf files.
+- name: Create Apache httpd website conf files.
   template:
-    src: "apache.conf.j2"
+    src: "httpd.conf.j2"
     dest: "{{ httpd_ext_dir }}/{{ item.name }}.conf"
   with_items: "{{ websites }}"
 

@@ -4,6 +4,14 @@
     name: 'python36u-mod_wsgi'
     state: present
 
+- name: place mod_wsgi config
+  copy:
+    src: "mod_wsgi-python3.6.conf"
+    dest: "{{ httpd_ext_dir }}/10-wsgi-python3.6.conf"
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Make sure httpd is started at boot.
   service:
     name: httpd
