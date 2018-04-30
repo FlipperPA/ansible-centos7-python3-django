@@ -30,10 +30,22 @@
     dest: /usr/bin/pg_config
     state: link
 
+- name: Allow connections from localhost IPv4 user accounts
+  lineinfile:
+    path: /var/lib/pgsql/10/data/pg_hba.conf
+    insertafter: '# IPv4 local connections:'
+    line: 'host    all             all             127.0.0.1/32            md5'
+
+- name: Allow connections from localhost IPv6 user accounts
+  lineinfile:
+    path: /var/lib/pgsql/10/data/pg_hba.conf
+    insertafter: '# IPv6 local connections:'
+    line: 'host    all             all             ::1/128                 md5'
+
 - name: Ensure PostgreSQL 10 service is running
   service:
     name: postgresql-10
-    state: started
+    state: restarted
     enabled: yes
 
 - name: Ensure psycopg2 is installed
