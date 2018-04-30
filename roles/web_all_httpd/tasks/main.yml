@@ -24,7 +24,7 @@
 - name: Create apache user authorized_keys
   copy:
     dest: "/home/apache/.ssh/authorized_keys"
-    content: "",
+    content: ""
     force: no
     owner: apache
     group: apache
