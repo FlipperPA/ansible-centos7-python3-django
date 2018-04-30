@@ -1,6 +1,9 @@
 [web-py]
 py1.digitalocean.com
 
+[web-php]
+php1.digitalocean.com
+
 [centos-7:children]
 web-py
 web-php
