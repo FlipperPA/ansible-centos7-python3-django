@@ -27,4 +27,9 @@
         },
     ]
   roles:
-    - { role: "web_all_apache_mod_wsgi_conf", tags: ['web'] }
+    - { role: "python27", tags: ['python'] }
+    - { role: "python36", tags: ['python'] }
+    - { role: "postgresql-10-server", tags: ['postgresql']}
+    - { role: "web_all_httpd_mod_wsgi", tags: ['python', 'httpd'] }
+    - { role: "web_all_httpd_mod_wsgi_directories", tags: ['web'] }
+    - { role: "web_all_httpd_mod_wsgi_conf", tags: ['web'] }
