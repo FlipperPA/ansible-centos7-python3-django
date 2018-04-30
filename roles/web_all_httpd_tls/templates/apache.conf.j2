@@ -1,0 +1,35 @@
+<VirtualHost *:80>
+  ServerName {{ item.server_name }}
+  Redirect permanent / https://{{ item.server_name }}/
+</VirtualHost>
+
+<VirtualHost *:443> 
+  SSLEngine On
+
+  ServerName {{ item.server_name }}
+  ErrorLog "/var/django/logs/{{ item.name }}-error.log"
+  LogLevel info
+
+  WSGIApplicationGroup %{GLOBAL}
+{% for site in item.sites %}
+
+  WSGIDaemonProcess {{ site.project }}-https python-home={{ site.virtualenv_root|default(VIRTUALENV_ROOT) }}/{{ site.project }} request-timeout=600 user={{ site.user|default(USER) }} group={{ site.group|default(GROUP) }}
+  WSGIProcessGroup {{ site.project }}-https
+  WSGIScriptAlias {{ site.path }} {{ site.django_root|default(DJANGO_ROOT) }}/{{ site.project }}/config/wsgi.py process-group={{ site.project }}-https
+  <Directory {{ site.django_root|default(DJANGO_ROOT) }}/{{ site.project }}/config>
+    Require all granted
+  </Directory>
+{% if site.static|default(STATIC) %}
+  Alias {{ site.path }}/static/ {{ site.django_root|default(DJANGO_ROOT) }}/{{ site.project }}/static/
+  <Directory {{ site.django_root|default(DJANGO_ROOT) }}/{{ site.project }}/static>
+    Require all granted
+  </Directory>
+{% endif %}
+{% if site.media_path %}
+  Alias {{ site.path }}/media/ {{ site.media_path }}/
+  <Directory {{ site.media_path }}>
+    Require all granted
+  </Directory>
+{% endif %}
+{% endfor %}
+</VirtualHost>
