@@ -7,7 +7,7 @@
   SSLEngine On
 
   ServerName {{ item.server_name }}
-  ErrorLog "|/usr/sbin/cronolog /var/log/httpd/errorlog/%Y/%Y-%m-{{ item.name }}-error.log"
+  ErrorLog "/var/django/logs/{{ item.name }}-error.log"
   LogLevel info
 
   WSGIApplicationGroup %{GLOBAL}
