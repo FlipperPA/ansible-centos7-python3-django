@@ -2,6 +2,7 @@
   ServerName {{ item.server_name }}
 {% if item.server_aliases|default('None') != 'None' %}
   ServerAlias{% for alias in item.server_aliases %} {{ alias }}{% endfor %}
+
 {% endif %}
   ErrorLog "/var/django/logs/{{ item.name }}-error.log"
   LogLevel info
