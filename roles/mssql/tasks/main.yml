@@ -12,7 +12,7 @@
     - unixODBC-utf16
     - unixODBC-utf16-devel
 
-- name: Install Microsoft ODBC Driver 13.1 for SQL Server for Linux
+- name: Install Microsoft ODBC Driver 17 for SQL Server for Linux
   yum:
     name: "{{ item }}"
     state: present
