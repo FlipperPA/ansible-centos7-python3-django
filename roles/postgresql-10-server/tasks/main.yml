@@ -30,13 +30,13 @@
     dest: /usr/bin/pg_config
     state: link
 
-- name: Allow connections from localhost IPv4 user accounts
+- name: Allow connections from localhost IPv4 user accounts via psycopg2 (no scram-sha-256 yet)
   lineinfile:
     path: /var/lib/pgsql/10/data/pg_hba.conf
     insertafter: '# IPv4 local connections:'
     line: 'host    all             all             127.0.0.1/32            md5'
 
-- name: Allow connections from localhost IPv6 user accounts
+- name: Allow connections from localhost IPv6 user accounts via psycopg2 (no scram-sha-256 yet)
   lineinfile:
     path: /var/lib/pgsql/10/data/pg_hba.conf
     insertafter: '# IPv6 local connections:'
