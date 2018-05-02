@@ -16,7 +16,6 @@
   service:
     name: httpd
     enabled: true
-    state: started
 
 - name: Create a deployment user
   user:
