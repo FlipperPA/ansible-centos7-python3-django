@@ -13,15 +13,21 @@
 
 - sefcontext:
     target: "/var/django/{{ item }}"
-    setype: httpd_sys_content_t
+    setype: system_u:object_r:httpd_sys_content_t
     state: present
   with_items:
     - sites
 
 - sefcontext:
     target: "/var/django/{{ item }}"
-    setype: httpd_sys_rw_content_t
+    setype: system_u:object_r:httpd_sys_rw_content_t
     state: present
   with_items:
     - media
+
+- sefcontext:
+    target: "/var/django/{{ item }}"
+    setype: system_u:object_r:httpd_log_t
+    state: present
+  with_items:
     - logs
