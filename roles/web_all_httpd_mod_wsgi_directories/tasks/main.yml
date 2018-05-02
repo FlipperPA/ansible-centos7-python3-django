@@ -11,23 +11,13 @@
     - media
     - logs
 
-- sefcontext:
-    target: "/var/django/{{ item }}"
-    setype: httpd_sys_content_t
-    state: present
+- name: Change security context of Django 'sites' directory
+  command: "chcon -Rv --type=httpd_sys_content_t /var/django/{{ item }}"
   with_items:
     - sites
 
-- sefcontext:
-    target: "/var/django/{{ item }}"
-    setype: httpd_sys_rw_content_t
-    state: present
+- name: Change security context of Django 'sites' directory
+  command: "chcon -Rv --type=httpd_sys_rw_content_t /var/django/{{ item }}"
   with_items:
     - media
-
-- sefcontext:
-    target: "/var/django/{{ item }}"
-    setype: httpd_log_t
-    state: present
-  with_items:
     - logs
