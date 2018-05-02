@@ -10,3 +10,18 @@
     - sites
     - media
     - logs
+
+- sefcontext:
+    target: "/var/django/{{ item }}"
+    setype: httpd_sys_content_t
+    state: present
+  with_items:
+    - sites
+
+- sefcontext:
+    target: "/var/django/{{ item }}"
+    setype: httpd_sys_rw_content_t
+    state: present
+  with_items:
+    - media
+    - logs
