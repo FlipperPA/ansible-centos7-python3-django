@@ -1,14 +1,11 @@
 ---
-- import_playbook: web-common.yml host_group=web-py WEB_ENVIRONMENT="prod"
+- import_playbook: web-common.yml host_group=web-py
 - name: Additional tasks to be performed on Python / Django servers
   hosts: web-py
   become: yes
   vars:
-    # WEB_ENVIRONMENT: either `prod` or `nonprod` for cert naming convention
-    "WEB_ENVIRONMENT": "prod"
-
     # DEFAULTS for the template, if not overridden in `sites`
-    "USER": "apache"
+    "USER": "django_deploy"
     "GROUP": "apache"
     "DJANGO_ROOT": "/var/django/sites"
     "STATIC": true

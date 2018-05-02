@@ -31,9 +31,9 @@
 #     group: root
 #     mode: 0600
 #   with_items:
-#     - "private/wrds-{{ WEB_ENVIRONMENT }}_cert.key"
+#     - "private/_cert.key"
 #     - certs/InCommonRSAServerCA_2.pem
-#     - certs/wrds-{{ WEB_ENVIRONMENT }}_cert.crt-endpoint
+#     - certs/_cert.crt-endpoint
 
 - name: Create Apache website conf files.
   template:
