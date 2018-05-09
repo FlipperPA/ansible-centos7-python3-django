@@ -33,8 +33,8 @@ chmod 600 .ssh/authorized_keys
 
 Clone this repository.
 
-    git clone git@github.com:FlipperPA/sepia-ansible.git
-    cd sepia-ansible
+    git clone git@github.com:YourUsername/ansible-centos7-python3-django.git
+    cd ansible-centos7-python3-django.git
 
 Deploy the dev environment:
 
