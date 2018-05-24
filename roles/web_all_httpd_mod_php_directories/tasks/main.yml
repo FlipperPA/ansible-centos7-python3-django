@@ -1,0 +1,32 @@
+---
+- name: Create PHP directories
+  file:
+    name: "/var/php/{{ item }}"
+    state: directory
+    owner: web_deploy
+    group: apache
+    mode: 0775
+  with_items:
+    - sites
+    - media
+    - logs
+
+- name: Change security context of PHP 'sites' directory
+  command: "chcon -Rv --type=httpd_sys_content_t /var/php/{{ item }}"
+  with_items:
+    - sites
+
+- name: Change security context of PHP 'media' and 'logs' directories
+  command: "chcon -Rv --type=httpd_sys_rw_content_t /var/php/{{ item }}"
+  with_items:
+    - media
+    - logs
+
+- name: Change security context of PHP 'sites' directory
+  command: "chcon -Rv --type=httpd_sys_rw_content_t /var/php/{{ item }}"
+  with_items:
+    - media
+    - logs
+
+- name: Ensure httpd can connect to databases
+  command: "setsebool -P httpd_can_network_connect_db on"
