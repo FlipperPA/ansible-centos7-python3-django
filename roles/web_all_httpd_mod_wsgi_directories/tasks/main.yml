@@ -22,11 +22,5 @@
     - media
     - logs
 
-- name: Change security context of Django 'sites' directory
-  command: "chcon -Rv --type=httpd_sys_rw_content_t /var/django/{{ item }}"
-  with_items:
-    - media
-    - logs
-
 - name: Ensure httpd can connect to databases
   command: "setsebool -P httpd_can_network_connect_db on"
