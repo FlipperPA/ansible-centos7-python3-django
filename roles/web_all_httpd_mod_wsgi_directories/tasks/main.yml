@@ -3,7 +3,7 @@
   file:
     name: "/var/django/{{ item }}"
     state: directory
-    owner: django_deploy
+    owner: web_deploy
     group: apache
     mode: 0775
   with_items:

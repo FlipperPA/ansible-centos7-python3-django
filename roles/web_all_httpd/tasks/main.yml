@@ -19,8 +19,8 @@
 
 - name: Create a deployment user
   user:
-    name: django_deploy
-    comment: Account to deploy Django sites.
+    name: web_deploy
+    comment: Account to deploy web sites.
     shell: /bin/bash
     group: apache
     generate_ssh_key: yes
@@ -29,6 +29,6 @@
 
 - name: Set authorized key from user's local public key file
   authorized_key:
-    user: django_deploy
+    user: web_deploy
     state: present
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

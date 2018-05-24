@@ -5,7 +5,7 @@
   become: yes
   vars:
     # DEFAULTS for the template, if not overridden in `sites`
-    "USER": "django_deploy"
+    "USER": "web_deploy"
     "GROUP": "apache"
     "DJANGO_ROOT": "/var/django/sites"
     "STATIC": true
