@@ -1,13 +1,13 @@
 ---
-- name: Install mod_php 7.2 for Apache httpd from IUS
+- name: Install mod_php 7.1 for Apache httpd from IUS
   yum:
-    name: 'mod_php72u'
+    name: 'mod_php71u'
     state: present
 
 - name: place mod_wsgi config
   copy:
-    src: "mod_php-7.2.conf"
-    dest: "{{ httpd_ext_dir }}/10-mod_php-7.2.conf"
+    src: "mod_php-7.1.conf"
+    dest: "{{ httpd_ext_dir }}/10-mod_php-7.1.conf"
     owner: root
     group: root
     mode: 0644
