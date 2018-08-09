@@ -5,10 +5,7 @@
   become: yes
   vars:
     # DEFAULTS for the template, if not overridden in `sites`
-    "USER": "web_deploy"
-    "GROUP": "apache"
-    "DJANGO_ROOT": "/var/django/sites"
-    "STATIC": true
+    "PHP_ROOT": "/var/php/sites"
 
     # Websites / domains for these servers to host
     "websites": [
@@ -18,16 +15,11 @@
             "server_aliases": [
                 "www.yourserver.org"
             ],
-            "sites": [
-                {
-                    "path": "/",
-                    "project": "yourserver",
-                }
-            ]
+            "project": "yourproject",
         },
     ]
   roles:
     - { role: "mariadb-server", tags: ['web'] }
     - { role: "web_all_httpd_mod_php_directories", tags: ['web'] }
     - { role: "web_all_httpd_mod_php", tags: ['python', 'httpd'] }
-    # - { role: "web_all_httpd_mod_php_conf", tags: ['web'] }
+    - { role: "web_all_httpd_mod_php_conf", tags: ['web'] }
