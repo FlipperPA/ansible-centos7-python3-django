@@ -1,0 +1,11 @@
+---
+- name: Create Apache httpd website conf files.
+  template:
+    src: "httpd.conf.j2"
+    dest: "{{ httpd_ext_dir }}/{{ item.name }}.conf"
+  with_items: "{{ websites }}"
+
+- name: Restart service httpd, in all cases
+  service:
+    name: httpd
+    state: restarted
