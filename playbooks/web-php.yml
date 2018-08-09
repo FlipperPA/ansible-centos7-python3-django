@@ -1,7 +1,7 @@
 ---
 - import_playbook: web-common.yml host_group=web-py
-- name: Additional tasks to be performed on Python / Django servers
-  hosts: web-py
+- name: Additional tasks to be performed on PHP servers
+  hosts: web-php
   become: yes
   vars:
     # DEFAULTS for the template, if not overridden in `sites`
