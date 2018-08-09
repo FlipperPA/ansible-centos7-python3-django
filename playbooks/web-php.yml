@@ -27,7 +27,7 @@
         },
     ]
   roles:
-    # - { role: "mariadb-10.1-server", tags: ['web'] }
+    - { role: "mariadb-server", tags: ['web'] }
     - { role: "web_all_httpd_mod_php_directories", tags: ['web'] }
     - { role: "web_all_httpd_mod_php", tags: ['python', 'httpd'] }
     - { role: "web_all_httpd_mod_php_conf", tags: ['web'] }
