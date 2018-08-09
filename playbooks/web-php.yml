@@ -1,5 +1,5 @@
 ---
-- import_playbook: web-common.yml host_group=web-py
+- import_playbook: web-common.yml host_group=web-php
 - name: Additional tasks to be performed on PHP servers
   hosts: web-php
   become: yes
@@ -30,4 +30,4 @@
     - { role: "mariadb-server", tags: ['web'] }
     - { role: "web_all_httpd_mod_php_directories", tags: ['web'] }
     - { role: "web_all_httpd_mod_php", tags: ['python', 'httpd'] }
-    - { role: "web_all_httpd_mod_php_conf", tags: ['web'] }
+    # - { role: "web_all_httpd_mod_php_conf", tags: ['web'] }
