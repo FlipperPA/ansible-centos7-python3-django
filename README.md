@@ -36,6 +36,16 @@ Clone this repository.
     git clone git@github.com:YourUsername/ansible-centos7-python3-django.git
     cd ansible-centos7-python3-django.git
 
+Edit the `inventory` file and add the destination servers.
+
+    [web-py]
+    dev.yourserver.com
+    123.34.56.789
+
+Edit the `ansible.cfg` file and change the `remote_user` to the one you created above on the destination server.
+
+    remote_user = your_project_ansible_user
+
 Deploy the dev environment:
 
     ansible-playbook playbooks/web-py.yml
