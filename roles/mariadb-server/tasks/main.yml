@@ -1,0 +1,8 @@
+---
+- name: Install MariaDB from EPEL
+  yum:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - mariadb-server
+    - mariadb-devel
