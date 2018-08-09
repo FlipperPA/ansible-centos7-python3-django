@@ -6,3 +6,9 @@
   with_items:
     - mariadb-server
     - mariadb-devel
+
+- name: Make sure MariaDB is started at boot.
+  service:
+    name: mariadb
+    state: started
+    enabled: true
