@@ -15,7 +15,6 @@
             "server_aliases": [
                 "www.yourserver.org"
             ],
-            "project": "yourproject",
         },
     ]
   roles:

@@ -4,8 +4,8 @@
   ServerAlias{% for alias in item.server_aliases %} {{ alias }}{% endfor %}
 
 {% endif %}
-  DocumentRoot "{{ item.php_root|default(PHP_ROOT) }}/{{ item.project }}"
-  <Directory "{{ item.php_root|default(PHP_ROOT) }}/{{ item.project }}">
+  DocumentRoot "{{ item.php_root|default(PHP_ROOT) }}/{{ item.name }}"
+  <Directory "{{ item.php_root|default(PHP_ROOT) }}/{{ item.name }}">
     DirectoryIndex index.php
     AllowOverride All
     Order allow, deny
