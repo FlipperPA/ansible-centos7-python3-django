@@ -8,11 +8,10 @@
   <Directory "{{ item.php_root|default(PHP_ROOT) }}/{{ item.name }}">
     DirectoryIndex index.php
     AllowOverride All
-    Order allow,deny
-    Allow from all
+    Require all granted
   </Directory>
   SetEnv APPLICATION_ENV "production"
-  AccessLog "/var/php/logs/{{ item.name }}-access.log"
+  CustomLog "/var/php/logs/{{ item.name }}-access.log" "%h %l %u %t \"%r\" %>s %b"
   ErrorLog "/var/php/logs/{{ item.name }}-error.log"
   LogLevel info
 </VirtualHost>
