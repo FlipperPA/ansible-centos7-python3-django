@@ -24,3 +24,6 @@
 
 - name: Ensure httpd can connect to databases
   command: "setsebool -P httpd_can_network_connect_db on"
+
+- name: Ensure httpd can send email
+  command: "setsebool -P httpd_can_sendmail=on"
