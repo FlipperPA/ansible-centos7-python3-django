@@ -25,7 +25,7 @@ ssh-keygen
 You will then need to add your public key from your host control machine to `your_project_ansible_user`'s authorized keys in `~/.ssh/authorized_keys`:
 
 ```bash
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv+IdIP7geRsOXUz7scIKTwkfxJ3J7UelRObTifdnmCHR6s53+irm9uVBP8se2IH1Vw4ETfjtdzI4vHce1lYwFVQx9V9cmKFyxCnroV7bTx6EPQ2WqkpAOfM5IGG7vGnrX3M0MPLrA0T8XrhPpCzM2GfNR8fqOQiPROP5blahblahblahblahblah5TQknqu7/twBtXuMpKakR4Vo08cq1MBJI8akEG/tzppoeYuRY8BzKqJVD+2Gp1RgBVsXLxX2W9ng6cFAHTRxs65koTWyVLCCCXsP54X4UqJRy1x5/PumL1VJn8LvXTGcOyfyFSBLClQ== you@yourdomain.com" >> .ssh/authorized_keys
+echo "ssh-rsa AAAAB3NzYourKeyYourKeyYourKeyYourKeyYourKeyYourKeyHR6s53+irm9uVBP8se2IH1Vw4ETfjtdzI4vHce1lYwFVQx9V9cmKFyxCnroV7bTx6EPQ2WqkpAOfM5IGG7vGnrX3M0MPLrA0T8XrhPpCzM2GfNR8fqOQiPROP5blahblahblahblahblah5TQknqu7/twBtXuMpKakR4Vo08cq1MBJI8akEG/tzppoeYuRY8BzKqJVD+2Gp1RgBVsXLxX2W9ng6cFAHTRxs65koTWyVLCCCXsP54X4UqJRy1x5/PumL1VJn8LvXTGcOyfyFSBLClQ== you@yourdomain.com" >> .ssh/authorized_keys
 chmod 600 .ssh/authorized_keys
 ```
 
@@ -59,7 +59,7 @@ Run some commands; `shell` is required for arguments and shell functions (`comma
 
     ansible all -m command -a uptime -i inventory
     ansible all -m shell -oa 'ps -eaf'
-    ansible rhel-7 -m copy -a 'content="Welcome to SEPIA, Ansiblized.\n" dest=/etc/motd' -u apache --become --become-user root
+    ansible rhel-7 -m copy -a 'content="Welcome to your server, Ansiblized.\n" dest=/etc/motd' -u apache --become --become-user root
 
 Documentation: list help section, show documentation for specific command (with examples!):
 
