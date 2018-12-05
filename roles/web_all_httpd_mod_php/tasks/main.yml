@@ -1,7 +1,9 @@
 ---
 - name: Install mod_php 7.1 for Apache httpd from IUS
   yum:
-    name: 'mod_php71u'
+    name: 
+      - mod_php71u
+      - php71u-mysqlnd
     state: present
 
 - name: place mod_wsgi config
