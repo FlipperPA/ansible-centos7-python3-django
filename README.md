@@ -46,9 +46,13 @@ Edit the `ansible.cfg` file and change the `remote_user` to the one you created 
 
     remote_user = your_project_ansible_user
 
-Deploy the dev environment:
+Deploy the server:
 
     ansible-playbook playbooks/web-py.yml
+
+NOTE: if you're using Vagrant, you'll get an error about the config file being world-writable due to Vagrant's shared folders. You can issue commands with an environment variable as a work-around:
+
+    ANSIBLE_CONFIG=./ansible.cfg ansible-playbook playbooks/web-py.yml
 
 Show some servers:
 
