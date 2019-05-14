@@ -15,3 +15,5 @@
    - libffi-devel
    - libjpeg-turbo-devel
    - giflib
+   - cairo-devel
+   - pango-devel
