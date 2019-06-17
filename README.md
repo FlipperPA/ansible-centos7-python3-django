@@ -50,7 +50,7 @@ Deploy the server:
 
     ansible-playbook playbooks/web-py.yml
 
-NOTE: if you're using Vagrant, you'll get an error about the config file being world-writable due to Vagrant's shared folders. You can issue commands with an environment variable as a work-around:
+NOTE: if you're using Vagrant, you may get an error about the config file being world-writable due to Vagrant's shared folders. You can issue commands with an environment variable as a work-around:
 
     ANSIBLE_CONFIG=./ansible.cfg ansible-playbook playbooks/web-py.yml
 
