@@ -1,7 +1,7 @@
 ---
-- import_playbook: web-common.yml host_group=web-php
+- import_playbook: web_common.yml host_group=web_php
 - name: Additional tasks to be performed on PHP servers
-  hosts: web-php
+  hosts: web_php
   become: yes
   vars:
     # DEFAULTS for the template, if not overridden in `sites`
