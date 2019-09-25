@@ -5,15 +5,6 @@
     state: present
 - name: Install various packages required by all web environments.
   yum: 
-    name: '{{ item }}'
+    name: ['zlib-devel', 'sqlite-devel', 'bzip2-devel', 'openssl-devel', 'libffi-devel', 
+'libjpeg-turbo-devel', 'giflib']
     state: present
-  with_items:
-   - zlib-devel
-   - sqlite-devel
-   - bzip2-devel
-   - openssl-devel
-   - libffi-devel
-   - libjpeg-turbo-devel
-   - giflib
-   - cairo-devel
-   - pango-devel

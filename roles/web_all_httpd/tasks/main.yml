@@ -1,12 +1,8 @@
 ---
 - name: Install Apache httpd 2.4 from RHEL
   yum:
-    name: '{{ item }}'
+    name: ['httpd', 'mod_ssl', 'python-certbot-apache']
     state: present
-  with_items:
-    - httpd
-    - mod_ssl
-    - python-certbot-apache
 
 - name: Populate a conf file for ServerName
   copy:

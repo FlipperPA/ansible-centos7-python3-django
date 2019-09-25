@@ -1,12 +1,8 @@
 ---
 - name: Install Python from IUS
   yum:
-    name: '{{ item }}'
+    name: ['python36u', 'python36u-pip', 'python36u-devel']
     state: present
-  with_items:
-    - python36u
-    - python36u-pip
-    - python36u-devel
 
 - name: Create symlink for Python 3.
   become: yes
